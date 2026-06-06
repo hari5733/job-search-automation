@@ -1,10 +1,13 @@
 import pandas as pd
 
-df = pd.read_csv("companies.csv")
+companies = pd.read_csv("companies.csv")
 
-print("Companies to Check:\n")
+print("Companies Loaded:", len(companies))
 
-for index, row in df.iterrows():
-    print(f"{row['Company']} -> {row['URL']}")
+jobs = pd.read_csv("all_jobs.csv")
 
-print("\nAutomation Started Successfully")
+print("\nTop Jobs:\n")
+
+jobs = jobs.sort_values("ATS Score", ascending=False)
+
+print(jobs)
