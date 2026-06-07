@@ -1,0 +1,21 @@
+resume_skills = [
+    "aws",
+    "gcp",
+    "azure",
+    "terraform",
+    "docker",
+    "kubernetes",
+    "helm",
+    "jenkins",
+    "github actions",
+    "gitlab",
+    "argocd",
+    "ansible",
+    "python",
+    "shell",
+    "prometheus",
+    "grafana",
+    "elk",
+    "splunk",
+    "servicenow"
+]

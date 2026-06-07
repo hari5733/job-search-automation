@@ -10,17 +10,27 @@ for job in jobs["Job Title"]:
 
     title = str(job).lower()
 
-    if "devops" in title:
-        score += 50
+    keywords = {
+        "devops": 30,
+        "aws": 20,
+        "kubernetes": 25,
+        "terraform": 20,
+        "jenkins": 15,
+        "docker": 15,
+        "linux": 15,
+        "python": 15,
+        "gcp": 15,
+        "azure": 15,
+        "engineer": 10,
+        "cloud": 15,
+        "platform": 15,
+        "reliability": 15,
+        "sre": 20
+    }
 
-    if "aws" in title:
-        score += 20
-
-    if "engineer" in title:
-        score += 20
-
-    if "platform" in title:
-        score += 10
+    for keyword, points in keywords.items():
+        if keyword in title:
+            score += points
 
     results.append([
         "Amazon",

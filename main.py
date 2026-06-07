@@ -1,13 +1,15 @@
-import pandas as pd
+import os
 
-companies = pd.read_csv("companies.csv")
+print("STEP 1 - Generate Jobs")
+os.system("python generate_jobs.py")
 
-print("Companies Loaded:", len(companies))
+print("\nSTEP 2 - ATS Match")
+os.system("python ats_match.py")
 
-jobs = pd.read_csv("all_jobs.csv")
+print("\nSTEP 3 - Top ATS Jobs")
+os.system("python top_ats_jobs.py")
 
-print("\nTop Jobs:\n")
+print("\nSTEP 4 - Email Report")
+os.system("python email_jobs.py")
 
-jobs = jobs.sort_values("ATS Score", ascending=False)
-
-print(jobs)
+print("\nAutomation Completed Successfully")
