@@ -4,7 +4,7 @@ import pandas as pd
 
 # Gmail Details
 EMAIL = "boyya.awsdevops777@gmail.com"
-APP_PASSWORD = "hktw ukau biis mfor"
+APP_PASSWORD = "APP_PASSWORD = "REPLACE_WITH_NEW_APP_PASSWORD""
 
 # Read ATS Jobs
 jobs = pd.read_csv("top_ats_jobs.csv")
