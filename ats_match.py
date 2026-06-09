@@ -29,7 +29,7 @@ preferred_roles = [
     "terraform"
 ]
 
-# DevOps Keywords Filter
+# DevOps Keywords
 devops_keywords = [
     "devops",
     "cloud",
@@ -38,7 +38,23 @@ devops_keywords = [
     "sre",
     "site reliability",
     "kubernetes",
-    "terraform"
+    "terraform",
+    "aws",
+    "docker",
+    "jenkins",
+    "ansible",
+    "linux"
+]
+
+# Remove unwanted entries
+bad_keywords = [
+    "blog",
+    "academy",
+    "forbes",
+    "developer hub",
+    "assessment",
+    "for developers",
+    "careers at"
 ]
 
 # Read Jobs
@@ -50,7 +66,11 @@ for _, row in jobs.iterrows():
 
     title = str(row["Job Title"]).lower()
 
-    # Skip non-relevant jobs
+    # Skip junk entries
+    if any(bad in title for bad in bad_keywords):
+        continue
+
+    # Keep only DevOps related jobs
     if not any(keyword in title for keyword in devops_keywords):
         continue
 
@@ -58,13 +78,11 @@ for _, row in jobs.iterrows():
 
     # Preferred Role Bonus
     for role in preferred_roles:
-
         if role in title:
             score += 20
 
     # Resume Skill Matching
     for skill, points in resume_skills.items():
-
         if skill in title:
             score += points
 
@@ -84,7 +102,7 @@ df = pd.DataFrame(
     ]
 )
 
-# Sort Highest Score First
+# Sort by ATS Score
 df = df.sort_values(
     by="ATS Score",
     ascending=False
